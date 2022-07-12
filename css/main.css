@@ -1,3 +1,7 @@
+body{
+  overflow: hidden;
+}
+
 #bg{
   display: flex;
   align-items: center;
@@ -25,4 +29,12 @@ h1{
   font-size: 125%;
   font-family: Gotham htf;
   color: #ffffff;
+}
+
+button{
+  background: None;
+  border: None;
+  color: #ffffff90;
+  font-size: 200%;
+  font-family: Gotham Black;
 }
