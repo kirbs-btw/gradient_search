@@ -1,21 +1,29 @@
 var count = 0;
 
+async function loadNames() {
+  response = await fetch('../data/data.json');
+  dataObj = await response.json();
+}
+
+loadNames();
+
 function changeColor(){
+  console.log(Object.keys(dataObj).length);
+  console.log(count);
+
+  if ((count + 1) == Object.keys(dataObj).length) {
+    count = -1;
+  }
+
   count += 1
-  if (count % 2 == 0) {
-    document.getElementById('bg').style.background = 'linear-gradient(90deg, #a2d7e5, #59a1d9)';
-    document.getElementById('gradientNameH1').innerHTML = "Winter Blue";
-    document.getElementById('colorOne').innerHTML = "#a2d7e5";
-    document.getElementById('colorTwo').innerHTML = "#59a1d9";
-    console.log(count);
-  }
-  else{
-    document.getElementById('bg').style.background = 'linear-gradient(90deg, #ea498b, #59a1d9)';
-    document.getElementById('gradientNameH1').innerHTML = "Cold Evening";
-    document.getElementById('colorOne').innerHTML = "#ea498b";
-    document.getElementById('colorTwo').innerHTML = "#59a1d9";
-    console.log(count);
-  }
 
+  //console.log(count);
+  //console.log(dataObj.name);
+  //console.log(dataObj[count]);
 
+  document.getElementById('bg').style.background = `linear-gradient(90deg, ${dataObj[count].color_one}, ${dataObj[count].color_two})`;
+  document.getElementById('gradientNameH1').innerHTML = `${dataObj[count].name}`;
+  document.getElementById('colorOne').innerHTML = `${dataObj[count].color_one}`;
+  document.getElementById('colorTwo').innerHTML = `${dataObj[count].color_two}`;
+  // console.log(count);
 }
