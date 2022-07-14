@@ -38,14 +38,15 @@ h1{
 
 .colors > h2{
   font-size: 125%;
-  font-family: Gotham htf;
+  /* font-family: Gotham htf; */
+  font-family: Noto Sans;
   color: #ffffff;
 }
 
 button{
   background: None;
   border: None;
-  color: #ffffff90;
+  color: #ffffff60;
   font-size: 200%;
   font-family: Gotham Black;
 }
