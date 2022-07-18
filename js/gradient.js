@@ -10,11 +10,18 @@ function generateHexColor(){
     }
     hexColor += hex;
   }
-  console.log(num);
-  console.log(hexColor);
+  return hexColor;
 }
 
-function hexToHsl(hex) {
+function generateHslColor(){
+  var h = Math.floor(Math.random() * 360);
+  var s = Math.floor(Math.random() * 30 + 60 )
+  var l = Math.floor(Math.random() * 80 + 20)
+
+  return [h, s, l];
+}
+
+function hexToHsl(hex){
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 
     var r = parseInt(result[1], 16);
@@ -44,10 +51,50 @@ function hexToHsl(hex) {
     l = Math.round(l);
     h = Math.round(360*h);
 
-    var colorInHSL = 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
-    // $rootScope.$emit('colorChanged', {colorInHSL});
-
-    console.log(colorInHSL);
-
+    return [h, s, l];
 }
-hexToHsl('#43fe23');
+
+function hslToHex(h, s, l) {
+  l /= 100;
+  const a = s * Math.min(l, 1 - l) / 100;
+  const f = n => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color).toString(16).padStart(2, '0');
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+function generateGradient(){
+  var colorOneHsl = generateHslColor();
+  var colorOne = hslToHex(colorOneHsl[0], colorOneHsl[1], colorOneHsl[2]);
+
+  // var colorOne = generateHexColor();
+
+  var colorOneHsl = hexToHsl(colorOne);
+
+  var hChange = Math.floor(Math.random() * 7 + 18);
+  var sChange = Math.floor(Math.random() * 10 + 20);
+  var lChange = Math.floor(Math.random() * 10 + 10);
+
+  var colorTwoValues = [(colorOneHsl[0] + hChange), (colorOneHsl[1] - sChange) ,(colorOneHsl[2] - lChange)];
+  var colorTwo = hslToHex(colorTwoValues[0], colorTwoValues[1], colorTwoValues[2]);
+
+  console.log(colorOne);
+
+  console.log(hChange);
+  console.log(sChange);
+  console.log(lChange);
+
+  console.log(colorTwo);
+
+  return [colorOne, colorTwo];
+}
+
+function changeBG(){
+  var colors = generateGradient();
+  var colorOne = colors[0];
+  var colorTwo = colors[1];
+
+  document.getElementById('bg').style.background = `linear-gradient(90deg, ${colorOne}, ${colorTwo})`;
+}
