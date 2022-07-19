@@ -1,18 +1,3 @@
-function generateHexColor(){
-  var hexColor = '#';
-
-  for (var i = 0; i < 3; i++) {
-    var num = Math.floor(Math.random() * 256);
-    var hex = num.toString(16);
-
-    if (num <= 16) {
-      hex = '0' + hex;
-    }
-    hexColor += hex;
-  }
-  return hexColor;
-}
-
 function generateHslColor(){
   var h = Math.floor(Math.random() * 360);
   var s = Math.floor(Math.random() * 30 + 60 )
@@ -69,24 +54,12 @@ function generateGradient(){
   var colorOneHsl = generateHslColor();
   var colorOne = hslToHex(colorOneHsl[0], colorOneHsl[1], colorOneHsl[2]);
 
-  // var colorOne = generateHexColor();
-
-  var colorOneHsl = hexToHsl(colorOne);
-
-  var hChange = Math.floor(Math.random() * 7 + 18);
+  var hChange = Math.floor(Math.random() * 14 + 18);
   var sChange = Math.floor(Math.random() * 10 + 20);
   var lChange = Math.floor(Math.random() * 10 + 10);
 
   var colorTwoValues = [(colorOneHsl[0] + hChange), (colorOneHsl[1] - sChange) ,(colorOneHsl[2] - lChange)];
   var colorTwo = hslToHex(colorTwoValues[0], colorTwoValues[1], colorTwoValues[2]);
-
-  console.log(colorOne);
-
-  console.log(hChange);
-  console.log(sChange);
-  console.log(lChange);
-
-  console.log(colorTwo);
 
   return [colorOne, colorTwo];
 }
