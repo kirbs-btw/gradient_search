@@ -71,3 +71,21 @@ function changeBG(){
 
   document.getElementById('bg').style.background = `linear-gradient(90deg, ${colorOne}, ${colorTwo})`;
 }
+
+function createJsonGradients(){
+  // creates a Json obj with 100 random gradients
+  var data = [];
+
+  for (var i = 0; i < 100; i++) {
+    var colors = generateGradient();
+    var colorOne = colors[0];
+    var colorTwo = colors[1];
+
+    var newLine = {"name":"","color_one":`${colorOne}`, "color_two":`${colorTwo}`};
+    console.log(newLine);
+
+    data.push(newLine);
+  }
+
+  return data;
+}
