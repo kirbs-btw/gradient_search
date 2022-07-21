@@ -67,7 +67,7 @@ function textColToLight(){
   var lightAvg = (lightValueOne + lightValueTwo) / 2;
 
   // 175 is a working threshold
-  // more testing needed 
+  // more testing needed
   if (lightAvg > 175) {
     var textCol = '#00000030';
     var hexTextCol = '#00000050';
@@ -177,15 +177,15 @@ function changeBG(){
 }
 
 function createJsonGradients(){
-  // creates a Json obj with 100 random gradients
+  // creates a Json obj with 1000 random gradients
   var data = [];
 
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 1000; i++) {
     var colors = generateGradient();
     var colorOne = colors[0];
     var colorTwo = colors[1];
 
-    var newLine = {"name":"Unnamed","color_one":`${colorOne}`, "color_two":`${colorTwo}`};
+    var newLine = {"name":`${i}`,"color_one":`${colorOne}`, "color_two":`${colorTwo}`};
     console.log(newLine);
 
     data.push(newLine);
