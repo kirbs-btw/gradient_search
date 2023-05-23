@@ -24,11 +24,12 @@ body{
   height: 100vh;
 }
 
-h1{
+#gradientNameH1{
   font-size: 600%;
   font-family: Gotham Black;
   color: #ffffff30;
 }
+
 
 .colors{
   width: 100%;
