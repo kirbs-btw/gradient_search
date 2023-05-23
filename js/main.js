@@ -24,6 +24,18 @@ dataObj = [{"name":"Winter Blue","color_one":"#a2d7e5", "color_two":"#59a1d9"},
 
 dataObj = createJsonGradients();
 
+changeColor();
+
+function copyGradient(){
+  console.log("hello")
+  var copyText = `linear-gradient(90deg, ${dataObj[count].color_one}, ${dataObj[count].color_two})`;
+
+  navigator.clipboard.writeText(copyText);
+
+  // Alert the copied text
+  alert("Copied the text: " + copyText);
+}
+
 function lastColor(){
   if ((count) == 0) {
     count = Object.keys(dataObj).length;
@@ -47,7 +59,7 @@ function nextColor(){
 
 function changeColor(){
   document.getElementById('bg').style.background = `linear-gradient(90deg, ${dataObj[count].color_one}, ${dataObj[count].color_two})`;
-  document.getElementById('gradientNameH1').innerHTML = `${dataObj[count].name}`;
+  // document.getElementById('gradientNameH1').innerHTML = `${dataObj[count].name}`;
   document.getElementById('colorOne').innerHTML = `${dataObj[count].color_one}`;
   document.getElementById('colorTwo').innerHTML = `${dataObj[count].color_two}`;
 
@@ -97,7 +109,6 @@ function getLightLvl(color){
 
   return (r + g + b) / 3;
 }
-
 
 // ----------------------------------------------------------------------------------------------------
 // i'm having trouble importing an other js file so here is the rest of the other file
